@@ -1,0 +1,161 @@
+# Report-It Frontend
+
+This is the frontend repository for the Report-It citizen complaint management system. It's built with React and provides a user-friendly interface for submitting and tracking complaints.
+
+## Features
+
+- Complaint submission form
+- Complaint status tracking
+- Agency selection
+- Responsive design
+- Error handling and validation
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Copy and configure environment variables
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+The application will be available at `http://localhost:3000`
+
+## Deployment
+
+### Vercel Deployment
+
+1. **Prerequisites**
+   - Vercel account
+   - Git repository
+
+2. **Deploy to Vercel**
+   ```bash
+   # 1. Install Vercel CLI
+   npm i -g vercel
+
+   # 2. Login to Vercel
+   vercel login
+
+   # 3. Deploy
+   vercel
+   ```
+
+3. **Vercel Configuration**
+   - Set environment variables in Vercel dashboard:
+     - `NEXT_PUBLIC_API_URL` (your Render backend URL)
+     - Any other frontend-specific variables
+
+4. **Frontend Build Settings**
+   - Create `vercel.json`:
+   ```json
+   {
+     "version": 2,
+     "builds": [
+       {
+         "src": "package.json",
+         "use": "@vercel/static-build"
+       }
+     ],
+     "routes": [
+       { "src": "/(.*)", "dest": "/$1" }
+     ]
+   }
+   ```
+
+### Environment Variables
+
+Create a `.env` file with the following variables:
+
+```
+NEXT_PUBLIC_API_URL=your-backend-url
+NEXT_PUBLIC_APP_NAME=Report-It
+NEXT_PUBLIC_VERSION=1.0.0
+```
+
+## Development
+
+### Available Scripts
+
+In the project directory, you can run:
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Run linter
+npm run lint
+```
+
+### Development Best Practices
+
+1. **Code Style**
+   - Follow ESLint rules
+   - Use TypeScript for type safety
+   - Maintain consistent component structure
+
+2. **State Management**
+   - Use React Query for API calls
+   - Implement proper error boundaries
+   - Handle loading states appropriately
+
+3. **Testing**
+   - Write component tests
+   - Implement API mocks
+   - Test error scenarios
+
+## Project Structure
+
+```
+src/
+├── components/      # Reusable UI components
+├── pages/          # Page components
+├── hooks/          # Custom React hooks
+├── services/       # API services
+├── utils/          # Utility functions
+├── styles/         # Global styles
+└── types/          # TypeScript types
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## Acknowledgments
+
+- React
+- Vercel
+- Material-UI
+- React Query
+- Jest
+- TypeScript
