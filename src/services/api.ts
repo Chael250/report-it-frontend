@@ -1,13 +1,18 @@
 
 import { Complaint, Agency, ApiError } from "../types";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://report-it-backend.onrender.com/api";
 
 // Helper function to handle API responses
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || "An error occurred");
+    const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+    console.error('API Error:', {
+      status: response.status,
+      statusText: response.statusText,
+      error: errorData
+    });
+    throw new Error(`API Error (${response.status}): ${errorData.message || errorData.error || 'Unknown error'}`);
   }
   
   // For 204 responses (no content)
@@ -15,7 +20,13 @@ async function handleResponse<T>(response: Response): Promise<T> {
     return {} as T;
   }
   
-  return response.json() as Promise<T>;
+  try {
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to parse response:', error);
+    throw new Error('Failed to parse API response');
+  }
 }
 
 // Complaint API functions

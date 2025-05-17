@@ -1,6 +1,13 @@
-# Report-It Frontend
+# Report-It Frontend (MVP)
 
-This is the frontend repository for the Report-It citizen complaint management system. It's built with React and provides a user-friendly interface for submitting and tracking complaints.
+This is an MVP version of the frontend repository for the Report-It citizen complaint management system. It demonstrates core functionality for submitting and tracking complaints. The system is functional but lacks many features that would be required for production use.
+
+## Current Status
+This is an MVP version demonstrating core functionality. The system includes basic features but lacks many features that would be required for production use. It serves as a foundation that can be built upon to create a full-fledged complaint management system.
+
+## Deployment URLs
+- Backend: https://report-it-backend.onrender.com/
+- Frontend: https://report-it-frontend.vercel.app/
 
 ## Features
 
@@ -84,10 +91,29 @@ The application will be available at `http://localhost:3000`
 Create a `.env` file with the following variables:
 
 ```
-NEXT_PUBLIC_API_URL=your-backend-url
 NEXT_PUBLIC_APP_NAME=Report-It
 NEXT_PUBLIC_VERSION=1.0.0
 ```
+
+Note: The API URL is now hardcoded to https://report-it-backend.onrender.com/api in the codebase, so no environment variable is needed for the backend URL.
+
+### Integration with Backend
+
+The frontend is configured to connect to the backend API at https://report-it-backend.onrender.com/. The application uses the following endpoints:
+
+- `GET /api/complaints` - List all complaints
+- `GET /api/complaints/:id` - Get a specific complaint
+- `POST /api/complaints` - Create a new complaint
+- `PUT /api/complaints/:id` - Update a complaint
+- `DELETE /api/complaints/:id` - Delete a complaint
+
+- `GET /api/agencies` - List all agencies
+- `GET /api/agencies/:id` - Get a specific agency
+- `POST /api/agencies` - Create a new agency
+- `PUT /api/agencies/:id` - Update an agency
+- `DELETE /api/agencies/:id` - Delete an agency
+
+Note: This MVP version includes basic API integration. In a full production version, additional endpoints and features would be implemented.
 
 ## Development
 
@@ -98,16 +124,6 @@ In the project directory, you can run:
 ```bash
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Run tests
-npm test
-
-# Run linter
-npm run lint
-```
 
 ### Development Best Practices
 
